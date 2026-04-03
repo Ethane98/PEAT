@@ -17,12 +17,12 @@ from peat import (
     utils,
 )
 
-
 # TODO: record all data sent and received via telnet
 # TODO: subclass peat.protocols.Telnet (need to make this work with telnetlib first)
 #   (from notes): can't use telnetlib with the D25, it'll cause
 #     device's telnet server to crash or become non-responsive
 # TODO: Implement pull method configuration in module settings
+
 
 class D25Telnet:
     """

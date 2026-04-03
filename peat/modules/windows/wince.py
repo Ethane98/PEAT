@@ -16,6 +16,7 @@ from peat.protocols.enip.enip_packets import PRODUCT_TYPES
 
 # TODO: Implement pull method configuration in module settings
 
+
 class WindowsCE(DeviceModule):
     """
     PEAT module for Windows CE embedded devices.

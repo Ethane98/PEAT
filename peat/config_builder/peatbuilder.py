@@ -125,7 +125,7 @@ class Host(HorizontalGroup):
             title=str(len(self.pull_methods))
             + " Pull Methods: "
             + ", ".join([pull_method.selected_pull_method for pull_method in self.pull_methods]),
-            id="pull_methods_collapsible"
+            id="pull_methods_collapsible",
         )
         with self.pull_methods_collapsible:
             yield VerticalScroll(*self.pull_methods, id="pull_methods")

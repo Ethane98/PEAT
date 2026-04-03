@@ -80,6 +80,7 @@ from .sel_http import SELHTTP
 
 # TODO: Use pull_methods option instead of <pull_method>: <True/False> option
 
+
 class SELRTAC(DeviceModule):
     """
     SEL Real-Time Automation Controller (RTAC).

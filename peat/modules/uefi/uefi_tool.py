@@ -16,6 +16,7 @@ from peat.modules.uefi.uefi_spi_parse import parse_file
 
 # TODO: Implement pull method configuration in module settings
 
+
 class UEFI(DeviceModule):
     device_type = "UEFI"
     filename_patterns = ["spi*.txt", "*hashes*.json"]
