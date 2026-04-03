@@ -64,7 +64,7 @@ hidden_imports = [
     'pysnmp.smi.mibs', 'pysnmp.smi.mibs.instances',
     'pysnmp.smi.exval', 'pysnmp.cache',
     'dataclasses', 'pydantic',
-    'tzlocal', 'manuf',
+    'tzlocal', 'manuf', 'rich._unicode_data.unicode17-0-0'
 ]
 
 
