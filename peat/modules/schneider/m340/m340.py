@@ -73,6 +73,8 @@ from .umas_packets import (
 #  - Parse some of the files pulled via FTP
 #  - Generate hashes of files pulled via FTP
 
+# TODO: Implement pull method configuration in module settings
+
 
 class M340(DeviceModule):
     """

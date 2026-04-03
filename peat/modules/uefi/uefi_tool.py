@@ -14,6 +14,7 @@ from peat import DeviceData, DeviceModule, datastore
 from peat.modules.uefi.uefi_hash_parse import parse_hash
 from peat.modules.uefi.uefi_spi_parse import parse_file
 
+# TODO: Implement pull method configuration in module settings
 
 class UEFI(DeviceModule):
     device_type = "UEFI"

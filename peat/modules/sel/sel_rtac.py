@@ -78,6 +78,7 @@ from .rtac_parse import (
 from .sel_consts import RTAC_DB_NAME, RTAC_DB_TABLES, RTAC_TRANSIENT_KEYS
 from .sel_http import SELHTTP
 
+# TODO: Use pull_methods option instead of <pull_method>: <True/False> option
 
 class SELRTAC(DeviceModule):
     """
@@ -88,6 +89,7 @@ class SELRTAC(DeviceModule):
     vendor_id = "SEL"
     vendor_name = "Schweitzer Engineering Laboratories"
     brand = "SEL"
+    model = "3530/3530-4"
 
     can_parse_dir = True
     filename_patterns = [
@@ -126,6 +128,7 @@ class SELRTAC(DeviceModule):
             "passwords": ["admin", "rtac"],
         },
         "sel": {
+            "pull_methods": ["http", "https", "postgres"],
             "pull_http": True,
             "pull_postgres": True,
             "rtac_monitor_enable": False,

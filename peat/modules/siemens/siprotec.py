@@ -41,6 +41,7 @@ SIPROTEC_MIBS_DIR = os.path.abspath(os.path.join(__file__, "..", "mibs"))
 
 # TODO: add parse method that takes MLFB and/or VER txt files
 
+# TODO: Implement pull method configuration in module settings
 
 class Siprotec(DeviceModule):
     """

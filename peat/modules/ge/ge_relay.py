@@ -20,6 +20,7 @@ from peat.protocols import HTTP, clean_mac
 
 # TODO: these devices may support HTTPS in some cases, should we handle that somehow?
 # TODO: make a "GEHTTP" subclass of HTTP to more cleanly implement custom functionality
+# TODO: Implement pull method configuration in module settings
 
 
 class GERelay(DeviceModule):

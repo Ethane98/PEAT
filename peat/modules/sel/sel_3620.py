@@ -32,7 +32,10 @@ class SEL3620(DeviceModule):
                 "Admin",
                 "administrator",
             ],
-        }
+        },
+        "sel": {
+            "pull_methods": ["https"],
+        },
     }
 
     @classmethod

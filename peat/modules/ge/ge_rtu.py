@@ -22,6 +22,8 @@ from peat import (
 # TODO: subclass peat.protocols.Telnet (need to make this work with telnetlib first)
 #   (from notes): can't use telnetlib with the D25, it'll cause
 #     device's telnet server to crash or become non-responsive
+# TODO: Implement pull method configuration in module settings
+
 class D25Telnet:
     """
     Implementation of the command interface for the GE D25 RTU over Telnet.

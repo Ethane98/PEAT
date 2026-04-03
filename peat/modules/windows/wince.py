@@ -14,6 +14,7 @@ from peat import DeviceData, DeviceModule, Interface, Service, datastore
 from peat.protocols.enip import VENDOR_NAMES
 from peat.protocols.enip.enip_packets import PRODUCT_TYPES
 
+# TODO: Implement pull method configuration in module settings
 
 class WindowsCE(DeviceModule):
     """
