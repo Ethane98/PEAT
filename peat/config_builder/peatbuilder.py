@@ -44,7 +44,27 @@ class PullMethod(HorizontalGroup):
     def select_changed(self, event: Select.Changed) -> None:
         if not isinstance(event.value, NoSelection):
             self.selected_pull_method = str(self.pull_methods[event.value - 1])
+            # Generic defaults
+            try:
+                default_ports = {
+                    "ssh": "22",
+                    "telnet": "23",
+                    "http": "80",
+                    "https": "443",
+                    "ftp": "21",
+                    "sftp": "22",
+                    "snmp": "161",
+                    "cip": "44818",
+                    "postgres": "5432",
+                }
+                self.query_one("#username").placeholder = "username"
+                self.query_one("#password").placeholder = "password"
+                self.query_one("#port").placeholder = default_ports[self.selected_pull_method]
+            except Exception:
+                pass
+
             default_options = get_default_options(self.module)
+            # Replace with module-defined defaults if available
             try:
                 self.query_one("#username").placeholder = default_options[
                     self.selected_pull_method
@@ -104,7 +124,8 @@ class Host(HorizontalGroup):
         self.pull_methods_collapsible = Collapsible(
             title=str(len(self.pull_methods))
             + " Pull Methods: "
-            + ", ".join([pull_method.selected_pull_method for pull_method in self.pull_methods])
+            + ", ".join([pull_method.selected_pull_method for pull_method in self.pull_methods]),
+            id="pull_methods_collapsible"
         )
         with self.pull_methods_collapsible:
             yield VerticalScroll(*self.pull_methods, id="pull_methods")
@@ -150,10 +171,31 @@ class PEATBuilder(App):
     # SCREENS = {"config": Config}
     CSS = """
     #ip_input {
-        width: 30
+        width: 50
     }
     #name_input {
         width: 30
+    }
+    #module_input {
+        width: 30
+    }
+    #filename_input {
+        width: 150
+    }
+    #ip_label {
+        width: 10
+    }
+    #name_label {
+        width: 10
+    }
+    #module_label {
+        width: 10
+    }
+    #hostinfo {
+        width: 30
+    }
+    #pull_methods_collapsible {
+        width: 100
     }
     """
     BINDINGS = [
@@ -169,18 +211,18 @@ class PEATBuilder(App):
         yield Header()
         yield VerticalScroll(*self.host_data, id="hosts")
         yield HorizontalGroup(
-            Button("Add Host", id="addhost", variant="primary"),
-            Label("IP: "),
+            Label("IP: ", id="ip_label"),
             Input(placeholder="192.168.1.1", id="ip_input"),
-            Label("Name: "),
+            Label("Name: ", id="name_label"),
             Input(placeholder="device", id="name_input"),
-            Label("Module: "),
+            Label("Module: ", id="module_label"),
             Select(
                 [(pull_method, index + 1) for index, pull_method in enumerate(self.modules)],
                 id="module_input",
             ),
+            Button("Add Host", id="addhost", variant="primary"),
         )
-        yield Input(placeholder="output_filename.yaml", id="filename")
+        yield Input(placeholder="output_filename.yaml", id="filename_input")
         yield Footer()
 
     def generate_config(self) -> str:
@@ -233,7 +275,7 @@ class PEATBuilder(App):
 
     def action_save_config(self) -> None:
         config = self.generate_config()
-        filename = self.query_one("#filename").value
+        filename = self.query_one("#filename_input").value
         if filename == "":
             filename = "peat_config.yaml"
 
