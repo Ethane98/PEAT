@@ -33,9 +33,9 @@ class SEL3620(DeviceModule):
                 "administrator",
             ],
         },
-        "sel": {
-            "pull_methods": ["https"],
-        },
+        #        "sel": {
+        #            "pull_methods": ["http"],
+        #        },
     }
 
     @classmethod

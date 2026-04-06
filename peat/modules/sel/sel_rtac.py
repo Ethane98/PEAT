@@ -129,7 +129,6 @@ class SELRTAC(DeviceModule):
             "passwords": ["admin", "rtac"],
         },
         "sel": {
-            "pull_methods": ["http", "https", "postgres"],
             "pull_http": True,
             "pull_postgres": True,
             "rtac_monitor_enable": False,
